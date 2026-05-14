@@ -18,7 +18,7 @@ test('TC#8 Add to Item to cart',async({page})=>{
      await loginpage.clickLoginLink()
      await loginpage.userLoginForm(username,password)  
      await loginpage.clicksubmitbtn()   
-     expect(page.locator('#nameofuser')).toHaveText(`Welcome ${username}`)
+     await expect(page.locator('#nameofuser')).toHaveText(`Welcome ${username}`)
 
      const pdt_name='Samsung galaxy s7'
      await page.locator('.hrefch').filter({ hasText: pdt_name }).click()
@@ -28,7 +28,6 @@ test('TC#8 Add to Item to cart',async({page})=>{
          expect(dialog.message()).toBe('Product added.')
         await dialog.accept()
      })
-     await addtocartpage.clickAddtoCartBtn()
 
 
 
