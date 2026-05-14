@@ -9,18 +9,21 @@ export class ConfirmOrderPage{
     creditcard:Locator
     month:Locator
     year:Locator
-    purchasebtn:Locator     
+    purchasebtn:Locator  
+    okbtn:Locator   
 
     constructor(page:Page){
+
         this.page=page
-        const orderModal = page.locator('.modal-body')
-        this.name=orderModal.locator('#name') 
-        this.country=orderModal.locator('#country')
-        this.city=orderModal.locator('#city')
-        this.creditcard=orderModal.locator('#card')
-        this.month=orderModal.locator('#month')
-        this.year=orderModal.locator('#year')
-        this.purchasebtn=orderModal.getByRole('button',{name:'Purchase'})
+        
+        this.name=page.locator('#name') 
+        this.country=page.locator('#country')
+        this.city=page.locator('#city')
+        this.creditcard=page.locator('#card')
+        this.month=page.locator('#month')
+        this.year=page.locator('#year')
+        this.purchasebtn=page.getByRole('button', { name: 'Purchase' })
+        this.okbtn=page.getByRole('button', { name: 'OK' })
     }           
 
     async fillOrderForm(name:string,country:string,city:string,creditcard:string,month:string,year:string){
@@ -28,14 +31,20 @@ export class ConfirmOrderPage{
         await this.name.fill(name)
         await this.country.fill(country)    
         await this.city.fill(city)
-        await this.creditcard.fill(String(creditcard))
-        await this.month.fill(String(month))
-        await this.year.fill(String(year))
+        await this.creditcard.fill(creditcard)
+        await this.month.fill(month)
+        await this.year.fill(year)
+       
     }                       
 
     
     async clickPurchaseBtn(){
         await this.purchasebtn.click()
+    }
+
+    
+    async clickOkBtn(){
+        await this.okbtn.click()
     }
 
 
