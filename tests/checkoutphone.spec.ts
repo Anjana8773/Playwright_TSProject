@@ -18,7 +18,7 @@ test('TC#8 Add to cart Item Phone',async({page})=>{
      await loginpage.clickLoginLink()
      await loginpage.userLoginForm(username,password)  
      await loginpage.clicksubmitbtn()   
-     expect(page.locator('#nameofuser')).toHaveText(`Welcome ${username}`)
+     await expect(page.locator('#nameofuser')).toHaveText(`Welcome ${username}`)
 
      const pdt_name='Iphone 6 32gb'
      await page.locator('.hrefch').filter({ hasText: pdt_name }).click()
@@ -44,12 +44,12 @@ test('TC#8 Add to cart Item Phone',async({page})=>{
      
      await confirmorderpage.fillOrderForm(name,country,city,creditcard,month,year)
      await expect(page.getByRole('button', { name: 'Purchase' })).toBeVisible()
-     await confirmorderpage.clickPurchaseBtn()
-     
-     page.once('dialog',async dialog=>{
+
+     page.once('dialog', async dialog => {
          expect(dialog.message()).toContain('Thank you for your purchase!')
-        await dialog.accept()
+         await dialog.accept()
      })
-    await confirmorderpage.clickOkBtn()
-   
+     await confirmorderpage.clickPurchaseBtn()
+     await confirmorderpage.clickOkBtn()
+
 })

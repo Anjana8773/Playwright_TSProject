@@ -50,5 +50,6 @@ test('TC#9 Add to cart Item Monitor',async({page})=>{
         await dialog.accept()
      })
     await confirmorderpage.clickOkBtn()
+   await expect(page.locator('.sweet-alert')).toContainText('Thank you for your purchase!')
      
 })

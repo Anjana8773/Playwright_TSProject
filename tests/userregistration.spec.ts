@@ -21,6 +21,7 @@ test('TC#1 User registration success',async({page})=>{
         expect(dialog.message()).toBe('Sign up successful.')
           await  dialog.accept()
     })
+    await expect(page.locator('#signInModal')).toBeHidden()
 
 })
 

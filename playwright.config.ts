@@ -39,7 +39,7 @@ export default defineConfig({
     launchOptions:{
     slowMo:0
     },
-    headless:false
+    headless:true
   },
 
   /* Configure projects for major browsers */

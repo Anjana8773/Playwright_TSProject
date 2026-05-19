@@ -23,7 +23,7 @@ test('TC#5 User Valid username and Invalid password',async({page})=>{
          expect(dialog.message()).toBe('Wrong password.')
         await dialog.accept()
      })
-     expect(page.locator('#nameofuser')).toBeHidden()
+     await expect(page.locator('#nameofuser')).toBeHidden()
       
 
 })

@@ -25,7 +25,7 @@ test('TC#8 Add to Item to cart',async({page})=>{
      
      // Setup dialog handler BEFORE clicking add to cart
      page.once('dialog',async dialog=>{
-         expect(dialog.message()).toBe('Product added.')
+        await expect(dialog.message()).toBe('Product added.')
         await dialog.accept()
      })
 

@@ -20,7 +20,7 @@ test('TC#4 User Invalid username and Valid password',async({page})=>{
     await loginpage.clicksubmitbtn()
 
      page.once('dialog', async dialog => {
-       await expect(dialog.message()).toBe('User does not exist.')
+        expect(dialog.message()).toBe('User does not exist.')
          await dialog.accept()
      })
 
